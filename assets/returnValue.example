@@ -1,0 +1,6 @@
+it('returns "Publicada hoy" if argument equals today', function (){
+    var date = new Date();
+    var stringDate = date.toISOString();
+    var result = daysSincePublication(stringDate);
+    expect(result).toBe('Publicada hoy');
+});

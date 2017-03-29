@@ -13,8 +13,11 @@ import {
   Slide,
   Text,
   Appear,
-  Image
+  Image,
+  Layout, TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table,
 } from "spectacle";
+
+import CodeSlide from 'spectacle-code-slide';
 
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
@@ -29,13 +32,15 @@ require("spectacle/lib/themes/default/index.css");
 
 const images = {
   occ: require("../assets/occ-imagotipo.svg"),
-  quick: require("../assets/quicksilver.gif")
+  quick: require("../assets/quicksilver.gif"),
+  slow: require("../assets/sloth.gif"),
+  react: require("../assets/react.svg")
 };
 
 preloader(images);
 
 const theme = createTheme({
-  primary: "white",
+  primary: "white", 
   secondary: "#CC1F62",//Purple
   tertiary: "black",//Black
   quartenary: "#424242"//Gray
@@ -49,11 +54,13 @@ export default class Presentation extends React.Component {
   render() {
     console.log(images);
     return (
-      <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme} progress="bar">
+      <Deck transition={[]} transitionDuration={500} theme={theme} progress="bar">
+        
         <Slide transition={["slide"]} bgColor="secondary">
           <Heading size={1} textColor="primary" fit="true">Unit Testing en ReactJS</Heading>
           <Heading size={6} textColor="primary">Jose Franco</Heading>
         </Slide>
+        
         <Slide transition={["slide"]} bgColor="primary">
           <Heading size={2} textColor="secondary">Agenda</Heading>
            <List textColor="quartenary">
@@ -69,14 +76,37 @@ export default class Presentation extends React.Component {
         <Slide transition={["slide"]} bgColor="secondary">
           <Heading size={1} textColor="primary" fit="true">Introduccion</Heading>
         </Slide>
+        
         <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={2} textColor="secondary">Yo</Heading>
+          <Layout>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderItem><Heading size={2} textColor="secondary">Yo</Heading></TableHeaderItem>                  
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableItem>
+                  <Appear fid="1">
+                    <Image src={images.slow.replace("/","")} width="75%"/>
+                  </Appear>
+                </TableItem>
+                <TableItem>
+                  <Appear fid="2">
+                    <Image src={images.quick.replace("/","")} width="75%"/>
+                  </Appear>
+                </TableItem>
+              </TableBody>
+            </Table>
+          </Layout>
         </Slide>
+
         <Slide transition={["slide"]} bgColor="secondary">
-          <Image src={images.occ} height="100%" color="white"/>
+          <Image src={images.occ} height="100%"/>
         </Slide>
+
         <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={2} textColor="secondary" fit margin="30px">🤔¿Porque probar?</Heading>
+          <Heading size={2} textColor="secondary" margin="30px">🤔¿Porque probar?</Heading>
           <Appear fid="1">
             <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
               ⚙️App funciona
@@ -97,12 +127,41 @@ export default class Presentation extends React.Component {
         <Slide transition={["slide"]} bgColor="secondary">
           <Heading size={1} textColor="primary" fit="true">Pruebas unitarias</Heading>
         </Slide>
+
         <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={2} textColor="secondary">¿Que son?</Heading>
+          <Heading size={2} textColor="secondary" margin="30px">¿Qué son?</Heading>
+          <Appear fid="1">
+            <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
+              - Tomamos la parte más chica del código 
+            </Text>
+          </Appear>
+          <Appear fid="2">
+            <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
+            - React => componentes
+            </Text>
+          </Appear>
+          <Appear fid="3">
+            <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
+              - Y probamos que funcione
+            </Text>
+          </Appear>
         </Slide>
-        <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={2} textColor="secondary">¿Que prueban?</Heading>
+
+        <Slide transition={["slide"]} bgColor="secondary">
+          <Heading size={1} textColor="primary" fit="true">¿Que prueban?</Heading>
         </Slide>
+
+        <CodeSlide
+          transition={[]}
+          lang="javascript"
+          code={require("raw-loader!../assets/returnValue.example")}
+          ranges={[
+            { loc: [0, 1] },
+            { loc: [3, 4] },
+            { loc: [4, 5] }
+          ]}/>
+
+
         <Slide transition={["slide"]} bgColor="primary">
           <Heading size={2} textColor="secondary">Mocking</Heading>
           //nelson from the simpsons image
