@@ -1,0 +1,20 @@
+it('Appends new jobs when updating props', function(){
+    var testJobs = [{id:1, location:[{statename: 'statename1', countryname:'countryname1'}]},
+                    {id:2, location:[{statename: 'statename2', countryname:'countryname2'}]}];
+    var testSummary = {totaldocs:testJobs.length};
+    var component = mountWithIntl(
+        <JobList
+            jobs = {testJobs} 
+            summary = {testSummary}
+        />
+    );
+    //Testing output
+    expect(component.state('items')).toEqual(testJobs);
+    //Appending jobs
+    var testJobs2 = [{id:3, location:[{statename: 'statename3', countryname:'countryname3'}]}];
+    expect(testJobs).not.toEqual(testJobs2);
+    var testSummary2 = {totaldocs:testJobs2.length};
+    component.setProps({jobs:testJobs2, summary:testSummary2});
+    component.update();
+    expect(component.state('items')).toEqual(testJobs.concat(testJobs2));
+});

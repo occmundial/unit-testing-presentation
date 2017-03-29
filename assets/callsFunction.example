@@ -1,0 +1,19 @@
+it('Calls a function when window scrolls', function(){
+    window.addEventListener = jest.fn();
+    window.removeEventListener = jest.fn();
+    var testJobs = [{id:1, location:[{statename: 'statename1', countryname:'countryname1'}]}];
+    var testSummary = {totaldocs:testJobs.length};
+    var component = mountWithIntl(
+        <JobList
+            jobs = {testJobs} 
+            summary = {testSummary}
+        />
+    );
+    expect(window.addEventListener).toHaveBeenCalled();
+    expect(window.addEventListener.mock.calls[0][0]).toEqual('scroll');
+    expect(typeof(window.addEventListener.mock.calls[0][1])).toEqual('function');
+    component.unmount();
+    expect(window.removeEventListener).toHaveBeenCalled();
+    expect(window.removeEventListener.mock.calls[0][0]).toEqual('scroll');
+    expect(typeof(window.removeEventListener.mock.calls[0][1])).toEqual('function');
+});

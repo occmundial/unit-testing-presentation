@@ -1,0 +1,11 @@
+it('Calls server to get categories', function(){
+    $.ajax = jest.fn(function (request) {
+        return new Promise();
+    });
+   var component = mount(
+       <HeaderFilters />
+    );
+    expect($.ajax).toHaveBeenCalled();
+    expect($.ajax.mock.calls[0][0].data.server).toEqual('lookup');
+    expect($.ajax.mock.calls[0][0].data.service).toEqual('categories');
+});

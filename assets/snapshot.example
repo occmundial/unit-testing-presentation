@@ -1,0 +1,31 @@
+it('Shows different css style for premium level', function () {
+    //Premium
+    var component = mount(
+        <IntlProvider locale="es">
+            <JobDescription job={testJob} isPremium={true}/>
+        </IntlProvider>
+    );
+    let treeIsPremium = component.html();
+    expect(treeIsPremium).toMatchSnapshot();
+    //Destacada
+    testJob.jobtype = 1;
+    component = mount(
+        <IntlProvider locale="es">
+            <JobDescription job={testJob}/>
+        </IntlProvider>
+    );
+    let treeOutstanding = component.html();
+    expect(treeOutstanding).toMatchSnapshot();
+    expect(treeOutstanding).toEqual(treeIsPremium);
+    //Normal
+    testJob.jobtype = 2;
+    component = mount(
+        <IntlProvider locale="es">
+            <JobDescription job={testJob}/>
+        </IntlProvider>
+    );
+    let treeNormal = component.html();
+    expect(treeNormal).toMatchSnapshot();
+    expect(treeNormal).not.toEqual(treeIsPremium);
+    expect(treeNormal).not.toEqual(treeOutstanding);
+})

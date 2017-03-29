@@ -1,0 +1,8 @@
+it('Sets internal props when mounting component', function(){
+	var testJobs = [{id:1, location:[{statename: 'statename1', countryname:'countryname1'}]},
+		{id:2, location:[{statename: 'statename2', countryname:'countryname2'}]}];
+	var component = mount(
+		<JobList jobs = {testJobs} />
+	);
+	expect(component.state('items')).toEqual(testJobs);
+});

@@ -1,0 +1,46 @@
+describe('[Petición asíncrona][Éxito]: Historias de éxito.', () => {
+	// Se inicializa el mock de peticiones asíncronas.
+	beforeEach(() => {
+		moxios.install();
+	});
+	// Se limpian los mocks después de cada petición.
+	afterEach(() => {
+		moxios.uninstall();
+	});
+	//Se crea la prueba.
+	it('Crea la acción RECEIVE_SUCCESS_STORIES al terminar la solicitud de las historias de éxito.', (done) => {
+		//Se crea el ejemplo de la acción que se espera desencadenar.
+		const expectedAction = [{ 
+			type: DynamicContentActions.RECEIVE_SUCCESS_STORIES, 
+			content: successStories
+		}];
+		//Se crea un estado mock del store.
+		const store = mockStore({ 
+			dynamic_content: {
+				JobsInfo: {},
+				SiteManagerJobs: [],
+				Survey: {},
+				SilverLight: {},
+				message: {},
+				ResumesInfo: {},
+				SliderInfo: [],
+				success_stories: [],
+				error: []
+			}
+		});
+		//Se dispara la acción y se compara los resultados.
+		store.dispatch(DynamicContentActions.loadSuccessStories())
+			.then(() => {
+				expect(store.getActions()).toEqual(expectedAction)
+			});
+		// Se mantiene el mock a la espera de la petición.
+		moxios.wait(async() => {
+			const request = moxios.requests.mostRecent();
+			await request.respondWith({
+				status: 200,
+				response: successStories
+			});
+			done();
+		});
+	});
+})

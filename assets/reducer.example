@@ -1,0 +1,55 @@
+describe('[Reductor]: Perfiles laborales.', () => {
+	//UNDEFINED
+	it('Debe devolver el estado inicial.', () => {
+		//Mock del estado inicial.
+		const initialState = {
+			job_profiles: [],
+			experiences: [],
+			error: []
+		};
+		//Expectativa.
+		expect(JobProfilesReducer(undefined, {})).toEqual(initialState);
+	});
+	//RECEIVE_JOB_PROFILES
+	it('Debe manejar el caso RECEIVE_JOB_PROFILES.', () => {
+		//Mock del estado inicial.
+		const newState = {
+			job_profiles: jobProfiles.data
+		};
+		//Expectativa.
+		expect(JobProfilesReducer({}, {
+			type: RECEIVE_JOB_PROFILES,
+			content: jobProfiles.data
+		})).toEqual(newState);
+	});
+	//RECEIVE_EXPERIENCES
+	it('Debe manejar el caso RECEIVE_EXPERIENCES.', () => {
+		//Mock del estado inicial.
+		const newState = {
+			experiences: profileExperiences.data
+		};
+		//Expectativa.
+		expect(JobProfilesReducer({}, {
+			type: RECEIVE_EXPERIENCES,
+			content: profileExperiences.data
+		})).toEqual(newState);
+	});
+	//CAIN_API_ERROR
+	const error = {
+		status: 404,
+		error: 'No se encontró información acerca del perfil especificado.'
+	};
+	it('Debe manejar el caso CAIN_API_ERROR.', () => {
+		//Mock del estado inicial.
+		const newState = {
+			job_profiles: [],
+			experiences: [],
+			error: error
+		};
+		//Expectativa.
+		expect(JobProfilesReducer({}, {
+			type: CAIN_API_ERROR,
+			error: error
+		})).toEqual(newState);
+	});
+})
