@@ -633,6 +633,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["slide"]} bgColor="primary">
           <Heading size={1} textColor="secondary" fit="true">👏¡Gracias!</Heading>
+          <Heading size={6} textColor="primary">github.com/occmundial/unit-testing-presentation</Heading>
         </Slide>
       </Deck>
     );
