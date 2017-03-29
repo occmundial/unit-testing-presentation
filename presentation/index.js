@@ -40,7 +40,13 @@ const images = {
   lego: require("../assets/lego.png"),
   wall: require("../assets/wall.jpg"),
   search: require("../assets/search.png"),
-  learning: require("../assets/learning.gif")
+  learning: require("../assets/learning.gif"), 
+  enzyme: require("../assets/enzyme.jpg"),
+  karma: require("../assets/karma.svg"),
+  jasmine: require("../assets/jasmine.png"),
+  mocha: require("../assets/mocha.svg"),
+  chai: require("../assets/chai.png"),
+  sinon: require("../assets/sinon.png")
 };
 
 preloader(images);
@@ -70,20 +76,20 @@ export default class Presentation extends React.Component {
         <Slide transition={["slide"]} bgColor="primary">
           <Heading size={2} textColor="secondary">Agenda</Heading>
            <List textColor="quartenary">
-            <ListItem>Introduccion</ListItem>
+            <ListItem>Introducción</ListItem>
             <ListItem>Unit Testing</ListItem>
             <ListItem>Tecnologias</ListItem>
             <ListItem>Ejemplos</ListItem>
-            <ListItem>Lecciones aprendidas</ListItem>
+            <ListItem>Experiencias</ListItem>
             <ListItem>Preguntas</ListItem>
           </List>
         </Slide>
 
         <Slide transition={["slide"]} bgColor="secondary">
-          <Heading size={1} textColor="primary" fit="true">Introduccion</Heading>
+          <Heading size={1} textColor="primary" fit="true">Introducción</Heading>
         </Slide>
         
-        <Slide transition={["slide"]} bgColor="primary">
+        <Slide transition={["slide"]} bgColor="primary" notes="*Estaba trabajando en una empresa gigante/lenta. <br/> *Deseaba regresar desarrollo web/veloz">
           <Layout>
             <Table>
               <TableHeader>
@@ -107,12 +113,12 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="secondary">
+        <Slide transition={["slide"]} bgColor="secondary" notes="*Contratado en OCC <br/>*Ocupamos tecnologias nuevas <br/>*Nuevos sitios en React <br/>*Arquitecto front end <br/>*Buenas practicas <br/>*Primer tarea => Pruebas">
           <Image src={images.occ} height="100%"/>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={2} textColor="secondary" margin="30px">🤔¿Porque probar?</Heading>
+        <Slide transition={["slide"]} bgColor="primary" notes="*Mejor practica preguntarse <br/> *No solo hacer por hacer <br/> *Muchas razones, solo muestro algunas <br/>*Desarrollo rapido <br/>*On-boarding rapido <br/>*Entender mejor codigo">
+          <Heading size={2} textColor="secondary" margin="30px" fit>🤔¿Por qué probar?</Heading>
           <Appear fid="1">
             <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
               ⚙️App funciona
@@ -120,12 +126,12 @@ export default class Presentation extends React.Component {
           </Appear>
           <Appear fid="2">
             <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
-              👌No rompi nada
+              👌No rompí nada
             </Text>
           </Appear>
           <Appear fid="3">
             <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
-              📖Documentacion viva
+              📖Documentación viva
             </Text>
           </Appear>
         </Slide>
@@ -134,7 +140,7 @@ export default class Presentation extends React.Component {
           <Heading size={1} textColor="primary" fit="true">Pruebas unitarias</Heading>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="primary">
+        <Slide transition={["slide"]} bgColor="primary" notes="*Hay muchos tipos de pruebas <br/> *Integracion <br/> *Regresion <br/> *Sanity/Smoke <br/> *Unitarias => Excelente punto de inicio <br/>">
           <Heading size={2} textColor="secondary" margin="30px">¿Qué son?</Heading>
           <Appear fid="1">
             <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">
@@ -154,10 +160,11 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={["slide"]} bgColor="secondary">
-          <Heading size={1} textColor="primary" fit="true">¿Que prueban?</Heading>
+          <Heading size={1} textColor="primary" fit="true">¿Qué prueban?</Heading>
         </Slide>
 
         <CodeSlide
+          notes="**ESTA ES LA PRIMERA VEZ QUE ESTAS ENSEÑANDO CODIGO EN PANTALLA**<BR/>**EXPLICA BREVEMENTE SINTAXIS** <br/> 1: Funcion it, estandar testing en JS <br/> 2.Guardar resultado <br/> 3. ESPERAMOS que el RESULTADO SEA IGUAL a ARGUMENTO"
           transition={[]}
           lang="javascript"
           code={require("raw-loader!../assets/returnValue.example")}
@@ -168,6 +175,7 @@ export default class Presentation extends React.Component {
           ]}/>
 
           <CodeSlide
+            notes = "1. <br/> 2. Crear un componente con ciertas propiedades <br/> 3.Esperamos que el estado interno sea X"
             transition={[]}
             lang="javascript"
             code={require("raw-loader!../assets/internalState.example")}
@@ -178,6 +186,7 @@ export default class Presentation extends React.Component {
             ]}/>
 
           <CodeSlide
+            notes = "1. <br/> 2. Crear un componente <br/> 3.Esperamos que haya hecho una llamada asincrona al montarse"
             transition={[]}
             lang="javascript"
             code={require("raw-loader!../assets/behavior.example")}
@@ -187,12 +196,13 @@ export default class Presentation extends React.Component {
               { loc: [7, 8] }
             ]}/>
 
-        <Slide transition={["slide"]} bgColor="primary">
+        <Slide transition={["slide"]} bgColor="primary" notes="Stub / Spy">
           <Heading size={2} textColor="secondary">Mocking</Heading>
           <Image src={images.nelson.replace("/","")} width="75%"/>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="primary">
+        <Slide transition={["slide"]} bgColor="primary"
+        notes = "*Cuando lo vamos a ocupar<br/> 1. Funcion llama otra <br/> 2. Componente tiene un hijo <br/> 3.Cliente llama al servidor <br/> *Estamos isolando <br/> *Probando solo la izquierda <br/> *Recuerden la definicion de Unit Testing">
           <Heading size={2} textColor="secondary" margin="30px">Mocking</Heading>
           <Layout>
             <Table>
@@ -272,6 +282,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
+            notes = "*Retomando el ultimo ejemplo de slide anterior <br/>"
             transition={[]}
             lang="javascript"
             code={require("raw-loader!../assets/behavior.example")}
@@ -280,6 +291,7 @@ export default class Presentation extends React.Component {
             ]}/>
 
         <CodeSlide
+            notes = "*Asumimos que el servidor va a responder bien <br/> *Otro equipo se encarga de eso <br/> *Tampoco podemos esperar a que responda <br/> *Ni sabemos donde se correra nuestra prueba, container/docker"
             transition={[]}
             lang="javascript"
             code={require("raw-loader!../assets/moxios.example")}
@@ -291,7 +303,8 @@ export default class Presentation extends React.Component {
           <Heading size={1} textColor="primary" fit="true">Tecnologias</Heading>
         </Slide>
 
-         <Slide transition={["slide"]} bgColor="primary">
+         <Slide transition={["slide"]} bgColor="primary"
+         notes = "*Runner: <br/> -Identificar tests <br/>-Correrlos <br/> -Regresarnos los resultados<br/><br/>*Assert <br/> -Compara resultados con valores esperados <br/> -Sintaxis de igualdad <br/> -Mas flexible que ===<br/><br/>*Mock: <br/> -Sustituir nuestras dependencias <br/>-Probar el comportamiento <br/> -Espias">
           <Heading size={2} textColor="secondary" margin="30px" fit>¿Qué necesitamos?</Heading>
           <Layout>
             <Table>
@@ -327,10 +340,12 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="primary">
+        <Slide transition={["slide"]} bgColor="primary"
+        notes = "*Mocha + maduro <br/> *Chai va de la mano de mocha <br/> *Sinon puede mockear servers <br/> *Jest es de facebook, no confundir con test-utils <br/> *Jest era 'fork' de Jasmime <br/> *Karma corre javascript en el browser. Aunque no es un problema si ocupas node y chrome porque tienen el mismo engine">
           <Layout>
             <Table>
               <TableHeader>
+                <TableItem/>
                 <TableItem/>
                 <TableItem>
                   <Text size={5} textColor="secondary" textAlign="center" bold margin="20px">Run</Text>
@@ -345,6 +360,9 @@ export default class Presentation extends React.Component {
               <TableBody>
                 <TableRow>
                   <TableItem>
+                    <Image src={images.mocha} height="50px"/>
+                  </TableItem>
+                  <TableItem>
                     <Text size={6} textColor="quartenary" textAlign="center" bold margin="10px">Mocha</Text>
                   </TableItem>
                   <TableItem>
@@ -354,6 +372,9 @@ export default class Presentation extends React.Component {
                   <TableItem/>
                 </TableRow>
                 <TableRow>
+                  <TableItem>
+                    <Image src={images.chai.replace("/","")} height="50px"/>
+                  </TableItem>
                   <TableItem>
                     <Text size={6} textColor="quartenary" textAlign="center" bold margin="10px">Chai</Text>
                   </TableItem>
@@ -365,6 +386,9 @@ export default class Presentation extends React.Component {
                 </TableRow>
                 <TableRow>
                   <TableItem>
+                    <Image src={images.sinon.replace("/","")} height="50px"/>
+                  </TableItem>
+                  <TableItem>
                     <Text size={6} textColor="quartenary" textAlign="center" bold margin="10px">Sinon</Text>
                   </TableItem>
                   <TableItem/>
@@ -374,6 +398,9 @@ export default class Presentation extends React.Component {
                   </TableItem>
                 </TableRow>
                 <TableRow>
+                  <TableItem>
+                    <Text size={6} textColor="quartenary" textAlign="center" bold margin="10px">🃏</Text>
+                  </TableItem>
                   <TableItem>
                     <Text size={6} textColor="quartenary" textAlign="center" bold margin="10px">Jest</Text>
                   </TableItem>
@@ -389,6 +416,9 @@ export default class Presentation extends React.Component {
                 </TableRow>
                 <TableRow>
                   <TableItem>
+                    <Image src={images.jasmine.replace("/","")} height="50px"/>
+                  </TableItem>
+                  <TableItem>
                     <Text size={6} textColor="quartenary" textAlign="center" bold margin="10px">Jasmine</Text>
                   </TableItem>
                   <TableItem>
@@ -403,6 +433,9 @@ export default class Presentation extends React.Component {
                 </TableRow>
                 <TableRow>
                   <TableItem>
+                    <Image src={images.karma} width="75px"/>
+                  </TableItem>
+                  <TableItem>
                     <Text size={6} textColor="quartenary" textAlign="center" bold margin="10px">Karma</Text>
                   </TableItem>
                   <TableItem>
@@ -416,8 +449,9 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="primary">
-          <Heading size={2} textColor="secondary" fit>¿Que ocupamos nosotros?</Heading>
+        <Slide transition={["slide"]} bgColor="primary"
+          notes="*Debate de build it yourself O todo completo <br/> *Enzyme nos da un DOM virtual y es semi-mocker con shallow <br/> *Istambul nos da reportes de cobertura">
+          <Heading size={2} textColor="secondary" fit>¿Qué ocupamos nosotros?</Heading>
           <Layout>
             <Table>
               <TableBody>
@@ -431,11 +465,26 @@ export default class Presentation extends React.Component {
                     </Appear>
                   </TableItem>
                   <TableItem>
-                    <Appear fid="1">
+                    <Appear fid="2">
                         <Image src={images.wall.replace("/","")} width="200px"/>
                     </Appear>
-                    <Appear fid="1">
+                    <Appear fid="2">
                       <Text size={5} textColor="quartenary" textAlign="center" bold margin="10px">Jest</Text>
+                    </Appear>
+                  </TableItem>
+                </TableRow>
+                <TableRow>
+                  <TableItem>
+                    <Appear fid="3">
+                        <Image src={images.enzyme.replace("/","")} width="200px"/>
+                    </Appear>
+                    <Appear fid="3">
+                      <Text size={5} textColor="quartenary" textAlign="center" bold margin="10px">Enzyme</Text>
+                    </Appear>
+                  </TableItem>
+                  <TableItem>
+                    <Appear fid="4">
+                      <Text size={5} textColor="quartenary" textAlign="center" bold margin="10px">Istanbul</Text>
                     </Appear>
                   </TableItem>
                 </TableRow>
@@ -449,15 +498,17 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <CodeSlide
+          notes="*Podemos y DEBEMOS probar plain old JS <br/> **2 lineas de codigo"
           transition={[]}
           lang="javascript"
           code={require("raw-loader!../assets/clientFunction.example")}
           ranges={[
-            { loc: [0, 1], title:"Funcion en el cliente" },
+            { loc: [0, 1], title:"Función en el cliente" },
             { loc: [6, 9] }
           ]}/>
 
           <CodeSlide
+          notes="*Si tienes redux <br/> Funciones puras como el cliente<br/> <br/> **2 lineas de codigo"
           transition={[]}
           lang="javascript"
           code={require("raw-loader!../assets/reducer.example")}
@@ -471,6 +522,7 @@ export default class Presentation extends React.Component {
         </Slide>
          
          <CodeSlide
+          notes="*Esto es Jest. Snapshots.<br/> <br/> **8 lineas de codigo"
           transition={[]}
           lang="javascript"
           code={require("raw-loader!../assets/snapshot.example")}
@@ -486,6 +538,7 @@ export default class Presentation extends React.Component {
           ]}/>
 
           <CodeSlide
+          notes="**6 lineas de codigo"
           transition={[]}
           lang="javascript"
           code={require("raw-loader!../assets/state.example")}
@@ -499,6 +552,7 @@ export default class Presentation extends React.Component {
           ]}/>
 
            <CodeSlide
+           notes="*Ejemplo de espia <br/> <br/>**6 lineas de codigo"
           transition={[]}
           lang="javascript"
           code={require("raw-loader!../assets/callsFunction.example")}
@@ -525,13 +579,13 @@ export default class Presentation extends React.Component {
                 </TableItem>
                 <TableItem>
                   <Appear fid="1">
-                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- No es fácil</Text>
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es dificil</Text>
                   </Appear>
                    <Appear fid="2">
-                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es tardado</Text>
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es lento</Text>
                   </Appear>
                   <Appear fid="3">
-                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es una inversion</Text>
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es una inversión</Text>
                   </Appear>
                 </TableItem>
               </TableBody>
@@ -557,7 +611,7 @@ export default class Presentation extends React.Component {
                     <Text size={6} textColor="quartenary" textAlign="left" bold margin="5px">5. "Mockea" TODO</Text>
                   </Appear>
                   <Appear fid="6">
-                    <Text size={6} textColor="quartenary" textAlign="left" bold margin="5px">6. Tu cobertura NUNCA sera 100%</Text>
+                    <Text size={6} textColor="quartenary" textAlign="left" bold margin="5px">6. Tu cobertura NUNCA será 100%</Text>
                   </Appear>
                   <Appear fid="7">
                     <Text size={6} textColor="quartenary" textAlign="left" bold margin="5px">7. Prueba features criticas primero</Text>
@@ -580,31 +634,6 @@ export default class Presentation extends React.Component {
         <Slide transition={["slide"]} bgColor="primary">
           <Heading size={1} textColor="secondary" fit="true">👏¡Gracias!</Heading>
         </Slide>
-
-        {/*<Slide transition={["fade"]} bgColor="tertiary">
-          <Heading size={6} textColor="primary" caps>Typography</Heading>
-          <Heading size={1} textColor="secondary">Heading 1</Heading>
-          <Heading size={2} textColor="secondary">Heading 2</Heading>
-          <Heading size={3} textColor="secondary">Heading 3</Heading>
-          <Heading size={4} textColor="secondary">Heading 4</Heading>
-          <Heading size={5} textColor="secondary">Heading 5</Heading>
-          <Text size={6} textColor="secondary">Standard text</Text>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>Standard List</Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
-          </List>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
-          </BlockQuote>
-        </Slide>*/}
       </Deck>
     );
   }
