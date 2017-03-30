@@ -1,4 +1,4 @@
-describe('[Petición asíncrona][Éxito]: Historias de éxito.', () => {
+describe('Historias de éxito.', () => {
 	// Se inicializa el mock de peticiones asíncronas.
 	beforeEach(() => {
 		moxios.install();

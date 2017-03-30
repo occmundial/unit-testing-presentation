@@ -1,4 +1,4 @@
-it('Calls server to get categories', function(){
+it('Llama al servidor para obtener categorias', function(){
     $.ajax = jest.fn(function (request) {
         return new Promise();
     });

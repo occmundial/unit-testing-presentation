@@ -1,4 +1,4 @@
-it('returns "Publicada hoy" if argument equals today', function (){
+it('Regresa "Publicada hoy" si el argumento es hoy', function (){
     var date = new Date();
     var stringDate = date.toISOString();
     var result = daysSincePublication(stringDate);

@@ -1,4 +1,4 @@
-it('Shows different css style for premium level', function () {
+it('Muestra un estilo CSS diferente para trabajos premium', function () {
     //Premium
     var component = mount(
         <IntlProvider locale="es">

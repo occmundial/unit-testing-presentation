@@ -30,7 +30,7 @@ require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
 
 const images = {
-  occ: require("../assets/occ-imagotipo.svg"),
+  occ: require("../assets/occ.png"),
   quick: require("../assets/quicksilver.gif"),
   slow: require("../assets/sloth.gif"),
   react: require("../assets/react.svg"),
@@ -113,8 +113,8 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="secondary" notes="*Contratado en OCC <br/>*Ocupamos tecnologias nuevas <br/>*Nuevos sitios en React <br/>*Arquitecto front end <br/>*Buenas practicas <br/>*Primer tarea => Pruebas">
-          <Image src={images.occ} height="100%"/>
+        <Slide transition={["slide"]} bgColor="primary" notes="*Contratado en OCC <br/>*Ocupamos tecnologias nuevas <br/>*Nuevos sitios en React <br/>*Arquitecto front end <br/>*Buenas practicas <br/>*Primer tarea => Pruebas">
+          <Image src={images.occ.replace("/","")} height="150%"/>
         </Slide>
 
         <Slide transition={["slide"]} bgColor="primary" notes="*Mejor practica preguntarse <br/> *No solo hacer por hacer <br/> *Muchas razones, solo muestro algunas <br/>*Desarrollo rapido <br/>*On-boarding rapido <br/>*Entender mejor codigo">
@@ -504,7 +504,7 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/clientFunction.example")}
           ranges={[
             { loc: [0, 1], title:"Función en el cliente" },
-            { loc: [6, 9] }
+            { loc: [1, 2] }
           ]}/>
 
           <CodeSlide
@@ -514,7 +514,7 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/reducer.example")}
           ranges={[
             { loc: [0, 1], title:"Reductores" },
-            { loc: [19, 23] }
+            { loc: [13, 14] }
           ]}/>
 
         <Slide transition={["slide"]} bgColor="primary">
@@ -570,7 +570,7 @@ export default class Presentation extends React.Component {
         </Slide>
           
           <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={2} textColor="secondary">Aprendizaje</Heading>
+            <Heading size={2} textColor="secondary">Iniciando</Heading>
             <Layout>
             <Table>
               <TableBody>
@@ -579,13 +579,19 @@ export default class Presentation extends React.Component {
                 </TableItem>
                 <TableItem>
                   <Appear fid="1">
-                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es dificil</Text>
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">-Cualquier framework es bueno</Text>
                   </Appear>
                    <Appear fid="2">
-                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es lento</Text>
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">-Empieza probando solo JS</Text>
                   </Appear>
                   <Appear fid="3">
-                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">- Es una inversión</Text>
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">-Sigue con "dumb" components</Text>
+                  </Appear>
+                  <Appear fid="4">
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">-Deja las pruebas asincronas al final</Text>
+                  </Appear>
+                  <Appear fid="5">
+                    <Text size={5} textColor="quartenary" textAlign="left" bold margin="10px">-Es normal que el código de prueba sea largo</Text>
                   </Appear>
                 </TableItem>
               </TableBody>
@@ -594,7 +600,7 @@ export default class Presentation extends React.Component {
           </Slide>
                     
           <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={2} textColor="secondary">Mandamientos</Heading>
+            <Heading size={2} textColor="secondary" fit="true">Mandamientos</Heading>
                   <Appear fid="1">
                     <Text size={10} textColor="quartenary" textAlign="left" bold margin="5px">1. Feature nueva = Prueba</Text>
                   </Appear>
@@ -633,7 +639,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["slide"]} bgColor="primary">
           <Heading size={1} textColor="secondary" fit="true">👏¡Gracias!</Heading>
-          <Heading size={6} textColor="primary">github.com/occmundial/unit-testing-presentation</Heading>
+          <Heading size={6} textColor="quartenary" fit="true">github.com/occmundial/unit-testing-presentation</Heading>
         </Slide>
       </Deck>
     );

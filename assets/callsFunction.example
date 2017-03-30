@@ -1,4 +1,4 @@
-it('Calls a function when window scrolls', function(){
+it('Agrega una funcion al scroll de la ventana', function(){
     window.addEventListener = jest.fn();
     window.removeEventListener = jest.fn();
     var testJobs = [{id:1, location:[{statename: 'statename1', countryname:'countryname1'}]}];

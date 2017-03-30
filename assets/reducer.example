@@ -1,4 +1,4 @@
-describe('[Reductor]: Perfiles laborales.', () => {
+describe('Perfiles laborales.', () => {
 	//UNDEFINED
 	it('Debe devolver el estado inicial.', () => {
 		//Mock del estado inicial.
