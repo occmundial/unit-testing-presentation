@@ -514,7 +514,8 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/reducer.example")}
           ranges={[
             { loc: [0, 1], title:"Reductores" },
-            { loc: [13, 14] }
+            { loc: [13, 14] },
+            { loc: [31, 35] }
           ]}/>
 
         <Slide transition={["slide"]} bgColor="primary">
