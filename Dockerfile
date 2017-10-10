@@ -1,0 +1,9 @@
+FROM node:#WA_UNITTESTING_NODE_VERSION#
+
+WORKDIR /app
+COPY . /app
+RUN npm install
+
+EXPOSE #WA_UNITTESTING_PORT#
+
+CMD npm start
