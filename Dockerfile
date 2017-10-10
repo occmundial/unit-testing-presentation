@@ -6,4 +6,4 @@ RUN npm install
 
 EXPOSE #WA_UNITTESTING_PORT#
 
-CMD npm start
+CMD npm run start:Prod

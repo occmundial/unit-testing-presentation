@@ -8,7 +8,7 @@ var config = require("./webpack.config");
 var app = express();
 var compiler = webpack(config);
 
-var serverPort = process.env.PORT || #WA_UNITTESTING_PORT#;
+var serverPort = process.env.PORT || 3000;
 
 app.use(require("webpack-dev-middleware")(compiler, {
   noInfo: true,
@@ -27,5 +27,5 @@ app.listen(serverPort, "0.0.0.0", function (err) {
     return;
   }
 
-  console.log("Listening @ port: " + serverPort);
+  console.log("Listening dev @ port: " + serverPort);
 });
