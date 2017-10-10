@@ -7,7 +7,8 @@ var app = express();
 
 var serverPort = process.env.PORT || #WA_UNITTESTING_PORT#;
 
-app.use("/dist", express.static("dist"));
+app.use("/dist", express.static(path.join(__dirname, "dist")));
+
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
