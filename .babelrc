@@ -1,12 +1,10 @@
 {
   "presets": [
-    [ "es2015", { "loose": true, "modules" : false } ],
+    ["es2015", { "loose": true, "modules": false }],
     "stage-0",
     "react"
   ],
-  "plugins": [
-    "transform-decorators-legacy",
-  ],
+  "plugins": ["transform-decorators-legacy"],
   "env": {
     "production": {
       "plugins": [
@@ -15,13 +13,11 @@
         "transform-react-constant-elements",
         "transform-react-inline-elements",
         "transform-runtime",
-        "transform-decorators-legacy",
-      ],
+        "transform-decorators-legacy"
+      ]
     },
     "test": {
-      "plugins": [
-        "transform-es2015-modules-commonjs"
-      ]
+      "plugins": ["transform-es2015-modules-commonjs"]
     }
   }
 }
